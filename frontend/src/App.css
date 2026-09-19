@@ -1,0 +1,796 @@
+/* =========================================
+   WEATHERGPT - PROFESSIONAL UI
+   ========================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: "Inter", Arial, sans-serif;
+  background:
+    radial-gradient(circle at 10% 10%, rgba(76, 108, 255, 0.16), transparent 30%),
+    radial-gradient(circle at 90% 20%, rgba(0, 200, 255, 0.10), transparent 25%),
+    #070b16;
+  color: #ffffff;
+  min-height: 100vh;
+}
+
+button,
+input {
+  font-family: inherit;
+}
+
+/* =========================================
+   APP
+   ========================================= */
+
+.app {
+  min-height: 100vh;
+}
+
+/* =========================================
+   HEADER
+   ========================================= */
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  padding: 18px 6%;
+
+  background: rgba(7, 11, 22, 0.78);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.logo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  font-size: 25px;
+  font-weight: 800;
+  letter-spacing: -0.7px;
+}
+
+.logo:first-letter {
+  font-size: 30px;
+}
+
+.logo span {
+  background: linear-gradient(90deg, #ffffff, #91a7ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* =========================================
+   SEARCH
+   ========================================= */
+
+.search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search input {
+  width: 260px;
+  height: 48px;
+
+  padding: 0 18px;
+
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 14px;
+
+  background: rgba(22, 29, 52, 0.85);
+  color: white;
+
+  outline: none;
+  font-size: 14px;
+
+  transition: 0.25s ease;
+}
+
+.search input::placeholder {
+  color: #7e8aa8;
+}
+
+.search input:focus {
+  border-color: rgba(101, 126, 255, 0.8);
+  box-shadow: 0 0 0 4px rgba(91, 124, 250, 0.10);
+}
+
+.search button {
+  height: 48px;
+
+  padding: 0 22px;
+
+  border: none;
+  border-radius: 14px;
+
+  background: linear-gradient(135deg, #5b7cfa, #755cf6);
+  color: white;
+
+  font-weight: 700;
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(91, 124, 250, 0.25);
+
+  transition: 0.25s ease;
+}
+
+.search button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 30px rgba(91, 124, 250, 0.35);
+}
+
+.search button:active {
+  transform: scale(0.97);
+}
+
+/* =========================================
+   MAIN CONTAINER
+   ========================================= */
+
+.container {
+  width: 88%;
+  max-width: 1250px;
+
+  margin: 42px auto 80px;
+}
+
+/* =========================================
+   ERROR
+   ========================================= */
+
+.error {
+  padding: 15px 20px;
+  margin-bottom: 20px;
+
+  border-radius: 14px;
+
+  background: rgba(255, 75, 75, 0.10);
+  border: 1px solid rgba(255, 75, 75, 0.25);
+
+  color: #ff9b9b;
+  font-size: 14px;
+}
+
+/* =========================================
+   HERO WEATHER CARD
+   ========================================= */
+
+.hero {
+  position: relative;
+  overflow: hidden;
+
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  min-height: 330px;
+
+  padding: 50px 55px;
+
+  border-radius: 30px;
+
+  background:
+    radial-gradient(circle at 85% 45%, rgba(100, 130, 255, 0.20), transparent 35%),
+    linear-gradient(135deg, #151d35, #10172b);
+
+  border: 1px solid rgba(255, 255, 255, 0.08);
+
+  box-shadow:
+    0 30px 80px rgba(0, 0, 0, 0.25),
+    inset 0 1px rgba(255, 255, 255, 0.04);
+
+  animation: fadeUp 0.6s ease;
+}
+
+.hero::before {
+  content: "";
+
+  position: absolute;
+
+  width: 250px;
+  height: 250px;
+
+  right: -100px;
+  top: -100px;
+
+  border-radius: 50%;
+
+  background: rgba(91, 124, 250, 0.10);
+
+  filter: blur(20px);
+}
+
+.location {
+  margin: 0 0 8px;
+
+  color: #aeb9d6;
+
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.hero h1 {
+  margin: 0;
+
+  font-size: clamp(70px, 9vw, 105px);
+
+  line-height: 1;
+
+  letter-spacing: -5px;
+
+  background: linear-gradient(180deg, #ffffff, #b8c5ed);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.hero h2 {
+  margin: 14px 0 5px;
+
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.feels {
+  margin: 0;
+
+  color: #8e9ab8;
+
+  font-size: 15px;
+}
+
+.weather-icon {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 180px;
+  height: 180px;
+
+  font-size: 120px;
+
+  filter: drop-shadow(0 20px 30px rgba(0, 0, 0, 0.25));
+
+  animation: floatWeather 4s ease-in-out infinite;
+}
+
+/* =========================================
+   WEATHER STATS
+   ========================================= */
+
+.stats {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 16px;
+
+  margin: 18px 0;
+}
+
+.stats div {
+  position: relative;
+  overflow: hidden;
+
+  padding: 25px;
+
+  min-height: 150px;
+
+  border-radius: 22px;
+
+  background: rgba(19, 27, 49, 0.82);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  transition: 0.3s ease;
+}
+
+.stats div::after {
+  content: "";
+
+  position: absolute;
+
+  width: 80px;
+  height: 80px;
+
+  right: -30px;
+  bottom: -30px;
+
+  border-radius: 50%;
+
+  background: rgba(91, 124, 250, 0.08);
+}
+
+.stats div:hover {
+  transform: translateY(-5px);
+
+  border-color: rgba(120, 145, 255, 0.25);
+
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.20);
+}
+
+.stats span {
+  display: block;
+
+  font-size: 28px;
+
+  margin-bottom: 15px;
+}
+
+.stats p {
+  margin: 0 0 7px;
+
+  color: #8995b3;
+
+  font-size: 13px;
+
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.stats strong {
+  font-size: 23px;
+  font-weight: 700;
+}
+
+/* =========================================
+   FORECAST
+   ========================================= */
+
+.forecast {
+  margin-top: 18px;
+
+  padding: 27px;
+
+  border-radius: 24px;
+
+  background: rgba(19, 27, 49, 0.78);
+
+  border: 1px solid rgba(255, 255, 255, 0.07);
+
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.forecast h2 {
+  margin: 0 0 20px;
+
+  font-size: 20px;
+  letter-spacing: -0.3px;
+}
+
+.hours {
+  display: grid;
+
+  grid-template-columns: repeat(7, minmax(130px, 1fr));
+
+  gap: 12px;
+
+  overflow-x: auto;
+
+  padding-bottom: 5px;
+}
+
+.hour {
+  min-width: 130px;
+
+  padding: 20px 14px;
+
+  text-align: center;
+
+  border-radius: 18px;
+
+  background: rgba(30, 40, 67, 0.75);
+
+  border: 1px solid rgba(255, 255, 255, 0.06);
+
+  transition: 0.25s ease;
+}
+
+.hour:hover {
+  transform: translateY(-4px);
+
+  background: rgba(39, 51, 83, 0.9);
+
+  border-color: rgba(120, 145, 255, 0.22);
+}
+
+.hour p {
+  margin: 6px 0;
+
+  color: #8f9bb9;
+
+  font-size: 12px;
+}
+
+.hour span {
+  display: block;
+
+  margin: 13px 0;
+
+  font-size: 35px;
+}
+
+.hour strong {
+  display: block;
+
+  font-size: 22px;
+}
+
+/* =========================================
+   AI CARD
+   ========================================= */
+
+.ai-card {
+  position: relative;
+  overflow: hidden;
+
+  margin-top: 22px;
+
+  padding: 35px;
+
+  border-radius: 26px;
+
+  background:
+    radial-gradient(circle at 90% 20%, rgba(120, 88, 255, 0.18), transparent 35%),
+    linear-gradient(135deg, #151f3b, #11182d);
+
+  border: 1px solid rgba(120, 145, 255, 0.14);
+
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.18);
+}
+
+.ai-card::before {
+  content: "";
+
+  position: absolute;
+
+  width: 160px;
+  height: 160px;
+
+  left: -70px;
+  bottom: -80px;
+
+  border-radius: 50%;
+
+  background: rgba(91, 124, 250, 0.08);
+
+  filter: blur(20px);
+}
+
+.ai-card h2 {
+  margin: 0;
+
+  font-size: 25px;
+}
+
+.ai-card > div > p {
+  margin: 10px 0 22px;
+
+  color: #919dbb;
+
+  font-size: 14px;
+}
+
+/* =========================================
+   CHAT BOX
+   ========================================= */
+
+.chat-box {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+
+  gap: 10px;
+
+  width: 100%;
+}
+
+.chat-box input {
+  flex: 1;
+
+  height: 54px;
+
+  padding: 0 18px;
+
+  border-radius: 15px;
+
+  border: 1px solid rgba(255, 255, 255, 0.09);
+
+  background: rgba(8, 13, 27, 0.65);
+
+  color: white;
+
+  outline: none;
+
+  font-size: 14px;
+
+  transition: 0.25s ease;
+}
+
+.chat-box input::placeholder {
+  color: #6e7a98;
+}
+
+.chat-box input:focus {
+  border-color: rgba(91, 124, 250, 0.7);
+
+  box-shadow: 0 0 0 4px rgba(91, 124, 250, 0.08);
+}
+
+.chat-box button {
+  height: 54px;
+
+  padding: 0 25px;
+
+  border: none;
+
+  border-radius: 15px;
+
+  background: linear-gradient(135deg, #5b7cfa, #765df6);
+
+  color: white;
+
+  font-weight: 700;
+
+  cursor: pointer;
+
+  transition: 0.25s ease;
+
+  box-shadow: 0 10px 25px rgba(91, 124, 250, 0.22);
+}
+
+.chat-box button:hover {
+  transform: translateY(-2px);
+
+  box-shadow: 0 14px 30px rgba(91, 124, 250, 0.32);
+}
+
+.chat-box button:disabled {
+  opacity: 0.6;
+  cursor: wait;
+  transform: none;
+}
+
+/* =========================================
+   AI RESPONSE
+   ========================================= */
+
+.reply-card {
+  position: relative;
+
+  margin-top: 18px;
+
+  padding: 28px 30px;
+
+  border-radius: 23px;
+
+  background: rgba(16, 24, 45, 0.9);
+
+  border: 1px solid rgba(91, 124, 250, 0.18);
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.16);
+
+  animation: fadeUp 0.4s ease;
+}
+
+.reply-card h2 {
+  margin: 0 0 15px;
+
+  font-size: 18px;
+
+  color: #b9c6ff;
+}
+
+.reply-card p {
+  margin: 0;
+
+  color: #d7dded;
+
+  line-height: 1.75;
+
+  font-size: 15px;
+
+  white-space: pre-wrap;
+}
+
+/* =========================================
+   SCROLLBAR
+   ========================================= */
+
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #273252;
+  border-radius: 20px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #3b4b77;
+}
+
+/* =========================================
+   ANIMATIONS
+   ========================================= */
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes floatWeather {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* =========================================
+   MOBILE
+   ========================================= */
+
+@media (max-width: 900px) {
+  .header {
+    padding: 16px 5%;
+  }
+
+  .container {
+    width: 92%;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .hero {
+    padding: 40px;
+  }
+
+  .hours {
+    grid-template-columns: repeat(7, 130px);
+  }
+}
+
+@media (max-width: 650px) {
+  .header {
+    position: relative;
+
+    flex-direction: column;
+
+    gap: 18px;
+  }
+
+  .logo {
+    font-size: 22px;
+  }
+
+  .search {
+    width: 100%;
+  }
+
+  .search input {
+    width: 100%;
+  }
+
+  .search button {
+    padding: 0 18px;
+  }
+
+  .container {
+    width: 94%;
+    margin-top: 25px;
+  }
+
+  .hero {
+    min-height: 300px;
+
+    padding: 30px;
+
+    flex-direction: column;
+
+    align-items: flex-start;
+
+    gap: 20px;
+  }
+
+  .hero h1 {
+    font-size: 70px;
+  }
+
+  .weather-icon {
+    position: absolute;
+
+    right: 15px;
+    top: 90px;
+
+    width: 120px;
+    height: 120px;
+
+    font-size: 75px;
+  }
+
+  .stats {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 10px;
+  }
+
+  .stats div {
+    padding: 20px 16px;
+    min-height: 130px;
+  }
+
+  .stats strong {
+    font-size: 19px;
+  }
+
+  .forecast {
+    padding: 20px;
+  }
+
+  .ai-card {
+    padding: 25px 20px;
+  }
+
+  .chat-box {
+    flex-direction: column;
+  }
+
+  .chat-box button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 420px) {
+  .stats {
+    grid-template-columns: 1fr;
+  }
+
+  .hero h1 {
+    font-size: 62px;
+  }
+
+  .weather-icon {
+    opacity: 0.7;
+  }
+}
