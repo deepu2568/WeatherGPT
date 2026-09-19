@@ -109,7 +109,7 @@ Use the supplied weather data whenever it is available.
 
 @app.get("/api/weather")
 def get_weather(city: str):
-
+    print("WEATHER DEBUG CITY:", city, flush=True)
     # ----------------------------------------------
     # Geocoding
     # ----------------------------------------------
