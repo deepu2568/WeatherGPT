@@ -3,11 +3,10 @@
   "appName": "WeatherGPT",
   "webDir": "dist",
   "server": {
-    "androidScheme": "https",
-    "cleartext": true
+    "androidScheme": "https"
   },
   "android": {
-    "allowMixedContent": true
+    "allowMixedContent": false
   },
   "plugins": {
     "CapacitorHttp": {

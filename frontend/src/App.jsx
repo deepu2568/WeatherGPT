@@ -2,7 +2,16 @@ import { useState } from "react";
 import { CapacitorHttp } from "@capacitor/core";
 import "./App.css";
 
-const API_BASE_URL = "http://127.0.0.1:8000";
+// API base URL is configurable per environment.
+//
+// - Development (.env.development) points at the local FastAPI backend.
+// - Production (.env.production) points at the deployed backend.
+//
+// If VITE_API_BASE_URL is not provided, fall back to the existing
+// production backend so the app keeps working exactly as before.
+const API_BASE_URL =
+  import.meta.env.VITE_API_BASE_URL ||
+  "https://weathergpt-backend-2udp.onrender.com";
 
 function App() {
   const [city, setCity] = useState("Chennai");
