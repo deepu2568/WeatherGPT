@@ -9,6 +9,7 @@ import "./App.css";
 //
 // If VITE_API_BASE_URL is not provided, fall back to the existing
 // production backend so the app keeps working exactly as before.
+
 const API_BASE_URL =
   import.meta.env.VITE_API_BASE_URL ||
   "https://weathergpt-backend-2udp.onrender.com";
@@ -145,6 +146,7 @@ Location:
 ${weather.location.city}, ${weather.location.country}
 
 CURRENT WEATHER
+
 Temperature: ${current.temperature_2m}°C
 Feels like: ${current.apparent_temperature}°C
 Humidity: ${current.relative_humidity_2m}%
@@ -154,10 +156,12 @@ Weather code: ${current.weather_code}
 
 TOMORROW'S FORECAST
 ===================
+
 ${tomorrowForecast}
 
 7-DAY FORECAST
 ==============
+
 ${sevenDayForecast}
 `;
       }
@@ -168,9 +172,11 @@ You are WeatherGPT.
 ${weatherContext}
 
 USER QUESTION:
+
 ${message}
 
 IMPORTANT RULES:
+
 - Use the supplied real weather data when answering.
 - Do not invent weather values.
 - If the user asks about tomorrow, use tomorrow's forecast.
@@ -393,9 +399,7 @@ IMPORTANT RULES:
 
                   <p>{weather.daily.time[1]}</p>
 
-                  <span>
-                    🌦️
-                  </span>
+                  <span>🌦️</span>
 
                   <strong>
                     {weather.daily.temperature_2m_max[1]}°C
@@ -438,9 +442,7 @@ IMPORTANT RULES:
 
                       <p>{date}</p>
 
-                      <span>
-                        🌦️
-                      </span>
+                      <span>🌦️</span>
 
                       <strong>
                         {
@@ -533,7 +535,7 @@ IMPORTANT RULES:
                 value={message}
                 onChange={(e) =>
                   setMessage(e.target.value)
-                }
+                }"}</
                 onKeyDown={handleChatKeyDown}
                 placeholder="Ask anything about the weather..."
               />
@@ -560,6 +562,7 @@ IMPORTANT RULES:
             <h2>
               🤖 WeatherGPT
             </h2>
+          <strong>Dileep konisetti
 
             <p>{reply}</p>
 
@@ -568,6 +571,38 @@ IMPORTANT RULES:
         )}
 
       </main>
+
+      {/* =================================================
+          PREMIUM DEVELOPER FOOTER
+          ================================================= */}
+
+      <footer className="weather-footer">
+
+        <div className="footer-main-text">
+          Made with ❤️ by{" strong>
+        </div>
+
+        <div className="footer-subtitle">
+          WeatherGPT • Smarter Weather. Brighter Days.
+        </div>
+
+        <div className="footer-divider">
+
+          <span></span>
+
+          <span className="footer-cloud">
+            ☁️
+          </span>
+
+          <span></span>
+
+        </div>
+
+        <div className="footer-copyright">
+          © 2025 WeatherGPT. All rights reserved.
+        </div>
+
+      </footer>
 
     </div>
   );
